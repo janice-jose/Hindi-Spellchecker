@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block body %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<section class="hero is-white is-medium">
+  <nav class="navbar is-transparent">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <h6 class="subtitle"><strong>SPELL CHECKER</strong></h6>
+      </a>
+      <div id="navbar-burger-id" class="navbar-burger burger" data-target="navbar-menu-id">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div id="navbar-menu-id" class="navbar-menu">
+
+    </div>
+  </nav>
+</section>
+<title>SPELL CHECKER</title>
+<section class="hero is-primary is-bold is-medium">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns">
+        <div class="column is-auto">
+          <br>
+          <p class="title is-3"> SpellChecker</p>
+
+          <p class="subtitle is-4">A Simple Web app to check Hindi and English spellings </p>
+
+          <!--<p class="subtitle is-5"> Ready to go database system</p>
+          <p class="subtitle is-5">&#x2022 User login, signup, and settings</p>!-->
+        </div>
+        <div class="column is-auto">
+
+          <form action="/output" method="POST" >
+            <label class="subtitle is-4"><strong> Choose the language</strong></label>
+            <div class="form-group">
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn btn-outline-primary btn-lg" for="btncheck1">English</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                <label class="btn btn-outline-primary btn-lg" for="btncheck2">Hindi</label>
+
+              </div>
+            </div>
+            <br>
+            <label class="subtitle is-4"><strong>Enter the Text</strong></label>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+              <input type="text" class="form-control" aria-describedby="emailHelp" name="input_text"
+                placeholder="Enter text">
+
+              <button type="button" class="btn btn-primary " type="submit" value=input_text >Submit</button>
+            </div>
+            <br>
+            
+            
+
+
+          </form>
+          <br>
+          <div class="form-group">
+            <!--<input type="text" class="form-control" placeholder="Corrected text suggestion" >-->
+            <h3 class="form-control" style="padding: 30px 35px;">  {{prediction}} </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hero">
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>SPELL CHECKER</strong> by Rachael ,Rhea and Janice
+          <span class="icon is-small">
+            <i class="fa fa-copyright"></i>
+          </span>2022</a>
+        </p>
+        <p>
+          <a class="icon has-text-primary" href="https://github.com/anfederico" target="_blank">
+            <i class="fa fa-globe"></i>
+          </a>
+          <a class="icon has-text-primary" href="https://github.com/anfederico" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+          <a class="icon has-text-primary" href="mailto:anfederico@github.user" target="_blank">
+            <i class="fa fa-envelope"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="../static/js/scripts.js"></script>
+{% endblock %}
