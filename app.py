@@ -3,28 +3,19 @@ import sys
 import os
 from scripts.spell_check import *
 from flask import Flask,render_template, request, session
-
+from spello.model import SpellCorrectionModel 
+sp = SpellCorrectionModel(language='en')    
+sp.load('model/en.pkl') 
 
 app = Flask(__name__)
  
 
-# Heroku
-#from flask_heroku import Heroku
-#heroku = Heroku(app)
+
 c = []
-# ======== Routing =========================================================== #
-# -------- Login ------------------------------------------------------------- #
-@app.route('/', methods=['GET'])
-def index():
-	return render_template('login.html')
 
-@app.route('/output', methods=['GET','POST'])
-def process_input():
+
+def hindi(t):
     corpus=loadCorpus(c)
-    print("done")
-    if request.method == 'POST':
-        t=request.form['input_text']
-
     words = t.strip().split()
     corrected=[]
     for word in words:
@@ -33,7 +24,26 @@ def process_input():
         else:
             corrected.append(word)    
     result=' '.join(corrected)
-    return render_template("login.html",prediction =result)
+    return result
+def english(t):  
+    res=sp.spell_correct(t)  
+    return res['spell_corrected_text']
+
+@app.route('/', methods=['GET'])
+def index():
+	return render_template('login.html')
+
+@app.route('/output', methods=['GET','POST'])
+def process_input():
+        
+    if request.method == 'POST':
+        t=request.form['input_text']
+        if request.form.get('action1')=='eng':
+            res=english(t)
+        elif request.form.get('action2')=='hin':
+            res=hindi(t) 
+    
+        return render_template("login.html",prediction =res)
 
 # ======== Main ============================================================== #
 if __name__ == "__main__":
