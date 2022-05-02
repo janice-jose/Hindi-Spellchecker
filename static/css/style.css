@@ -1,3 +1,10 @@
+html{
+  height:100%;
+} 
+body{
+  height:100%;
+} 
+
 .login-input {
   width: 130px;
 }
@@ -26,4 +33,16 @@
 
 .settings-area {
   padding: 30px;
+}
+
+.hero-container-spell{
+  background-color:rgb(192, 172, 243);
+}
+
+.navbar-item{
+  text-decoration: none;
+}
+
+.container{
+  color:rgb(192, 172, 243);
 }

@@ -5,7 +5,7 @@ from scripts.spell_check import *
 from flask import Flask,render_template, request, session
 from spello.model import SpellCorrectionModel 
 sp = SpellCorrectionModel(language='en')    
-sp.load('model/en.pkl') 
+sp.load('model/en_large.pkl')
 
 app = Flask(__name__)
  
